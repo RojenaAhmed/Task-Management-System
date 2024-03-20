@@ -1,6 +1,6 @@
 package banquemisr.challenge05.entities;
 
-import banquemisr.challenge05.AlertStatus;
+import banquemisr.challenge05.enums.AlertStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,26 +13,26 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table (name = "tasks")
-public class tasks {
+@Table(name = "tasks")
+public class task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long TaskId ;
+    private Long TaskId;
 
     @Column(name = "title")
-    private String Title ;
+    private String Title;
 
     @Column(name = "description")
-    private String Description ;
+    private String Description;
 
     @Enumerated(EnumType.STRING)
     private AlertStatus status;
 
     @Column(name = "priority")
-    private Long Priority ;
+    private Long Priority;
 
-    @JsonFormat(pattern = "yyyy-MM-dd",shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
     @Column(name = "duedate")
-    private String DueDate ;
+    private String DueDate;
 
 }

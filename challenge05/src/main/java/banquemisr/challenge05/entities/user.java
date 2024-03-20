@@ -1,7 +1,7 @@
 package banquemisr.challenge05.entities;
 
 
-import banquemisr.challenge05.Role;
+import banquemisr.challenge05.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,26 +19,26 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table (name = "users")
-public class users implements UserDetails {
+@Table(name = "users")
+public class user implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long UserId;
 
-    @Column (name = "firstname")
+    @Column(name = "firstname")
     private String FirstName;
 
     @Column(name = "lastname")
     private String LastName;
 
-    @Column (name = "email",nullable = false,unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column (name = "password")
+    @Column(name = "password")
     private String Password;
 
     @Enumerated(EnumType.STRING)
-     private Role role;
+    private Role role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -54,7 +54,7 @@ public class users implements UserDetails {
     public String getUsername() {
 
         return email;
-            }
+    }
 
     @Override
     public boolean isAccountNonExpired() {

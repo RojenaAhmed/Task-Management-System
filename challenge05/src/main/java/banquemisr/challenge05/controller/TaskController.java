@@ -1,7 +1,7 @@
 package banquemisr.challenge05.controller;
 
 import banquemisr.challenge05.DTO.TaskDTO;
-import banquemisr.challenge05.entities.tasks;
+import banquemisr.challenge05.entities.task;
 import banquemisr.challenge05.service.TasksService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -14,11 +14,10 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping ("/api/tasks")
-public class TasksController {
+@RequestMapping("/api/tasks")
+public class TaskController {
 
     private TasksService tasksService;
-
 
 
     // Build Add Tasks Rest API
@@ -35,33 +34,33 @@ public class TasksController {
         TaskDTO tasksDTO = tasksService.getTasksById(tasksId);
         return ResponseEntity.ok(tasksDTO);
 
-}
+    }
 
     @GetMapping("/tasks")
-    public Page<tasks> filterAndPaginateTasks(
+    public Page<task> filterAndPaginateTasks(
             @RequestParam(name = "title", required = false) String title,
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "10") int size) {
-        return tasksService.filterAndPaginate(title,PageRequest.of(page,size));
+        return tasksService.filterAndPaginate(title, PageRequest.of(page, size));
     }
 
 
     // Build Get All Tasks Rest API
-    public ResponseEntity<List<TaskDTO>> getAllTasks(){
-    List<TaskDTO> tasks = tasksService.getAllEmployees();
-      return ResponseEntity.ok(tasks);
+    public ResponseEntity<List<TaskDTO>> getAllTasks() {
+        List<TaskDTO> tasks = tasksService.getAllEmployees();
+        return ResponseEntity.ok(tasks);
     }
 
     // Build update Tasks Rest API
     @PutMapping("{id}")
-    public ResponseEntity<TaskDTO> updateTask(@PathVariable("id")Long tasksId , @RequestBody TaskDTO updatedTasks){
-        TaskDTO tasksDTO = tasksService.updateTasks(tasksId , updatedTasks);
+    public ResponseEntity<TaskDTO> updateTask(@PathVariable("id") Long tasksId, @RequestBody TaskDTO updatedTasks) {
+        TaskDTO tasksDTO = tasksService.updateTasks(tasksId, updatedTasks);
         return ResponseEntity.ok(tasksDTO);
     }
 
     // Build Delete Tasks Rest API
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteTasks(Long tasksId){
+    public ResponseEntity<String> deleteTasks(Long tasksId) {
         tasksService.deleteTasks(tasksId);
         return ResponseEntity.ok("Tasks deleted successfully!.");
     }

@@ -18,7 +18,7 @@ public class HistoryDTO {
 
     private String actionType;
 
-    private Long  userId;
+    private Long userId;
 
     private String actionDate;
 }

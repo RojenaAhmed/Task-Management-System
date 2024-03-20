@@ -3,7 +3,7 @@ package banquemisr.challenge05.service;
 import banquemisr.challenge05.DTO.UserDTO;
 
 import banquemisr.challenge05.security.JwtService;
-import banquemisr.challenge05.entities.users;
+import banquemisr.challenge05.entities.user;
 
 import banquemisr.challenge05.exception.UsersNotFoundExceptions;
 
@@ -20,28 +20,31 @@ import org.springframework.stereotype.Service;
 public class UsersServiceImpl implements UsersService {
     private final UsersRepository usersRepository;
     private final JwtService jwtService;
-    public UserDTO getUsersById (Long userId) {
-        users users = usersRepository.findById(userId)
+
+    public UserDTO getUsersById(Long userId) {
+        user users = usersRepository.findById(userId)
                 .orElseThrow(() ->
-        new UsersNotFoundExceptions(("\"user is not exist : \" " + userId)));
+                        new UsersNotFoundExceptions(("\"user is not exist : \" " + userId)));
 
         return UsersMapper.mapToUsersDTO(users);
     }
 
-    private UserDetails getUserDetails(String email){
+    private UserDetails getUserDetails(String email) {
         return usersRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found"));
     }
 
-    private boolean isValidEmail(String email){
-        return email!=null&&email.contains("@");
+    private boolean isValidEmail(String email) {
+        return email != null && email.contains("@");
     }
-    private boolean isValidPassword(String password){
-        return password!= null && password.length()>=8;
+
+    private boolean isValidPassword(String password) {
+        return password != null && password.length() >= 8;
     }
+
     @Override
-    public String login(String email,String password) {
-        if (!isValidEmail(email)|| !isValidPassword(password)){
+    public String login(String email, String password) {
+        if (!isValidEmail(email) || !isValidPassword(password)) {
             throw new UsersNotFoundExceptions("invalid Credentials");
         }
         UserDetails userDetails = getUserDetails(email);

@@ -1,7 +1,7 @@
 package banquemisr.challenge05.DTO;
 
 
-import banquemisr.challenge05.AlertStatus;
+import banquemisr.challenge05.enums.AlertStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
