@@ -3,7 +3,7 @@ package banquemisr.challenge05.service;
 import banquemisr.challenge05.DTO.UserDTO;
 
 import banquemisr.challenge05.security.JwtService;
-import banquemisr.challenge05.entities.user;
+import banquemisr.challenge05.entities.User;
 
 import banquemisr.challenge05.exception.UsersNotFoundExceptions;
 
@@ -22,7 +22,7 @@ public class UsersServiceImpl implements UsersService {
     private final JwtService jwtService;
 
     public UserDTO getUsersById(Long userId) {
-        user users = usersRepository.findById(userId)
+        User users = usersRepository.findById(userId)
                 .orElseThrow(() ->
                         new UsersNotFoundExceptions(("\"user is not exist : \" " + userId)));
 

@@ -1,10 +1,10 @@
 package banquemisr.challenge05.mapper;
 
 import banquemisr.challenge05.DTO.TaskDTO;
-import banquemisr.challenge05.entities.task;
+import banquemisr.challenge05.entities.Task;
 
 public class TasksMapper {
-    public static TaskDTO mapToTasksDTO(task tasks) {
+    public static TaskDTO mapToTasksDTO(Task tasks) {
         return new TaskDTO(
                 tasks.getTaskId(),
                 tasks.getTitle(),
@@ -17,8 +17,8 @@ public class TasksMapper {
         );
     }
 
-    public static task mapToTasks(TaskDTO tasksDTO) {
-        return new task(
+    public static Task mapToTasks(TaskDTO tasksDTO) {
+        return new Task(
                 tasksDTO.getTaskId(),
                 tasksDTO.getTitle(),
                 tasksDTO.getDescription(),

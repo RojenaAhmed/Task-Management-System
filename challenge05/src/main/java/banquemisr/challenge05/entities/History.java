@@ -13,18 +13,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table (name = "history")
-public class history {
+@Table(name = "history")
+public class History {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long HistoryId;
-    @Column (name = "taskid")
+    @Column(name = "taskid")
     private Long TASKId;
-    @Column (name = "actiontype")
+    @Column(name = "actiontype")
     private String ActionType;
-    @Column (name = "userid")
-    private Long  UserId;
-    @JsonFormat(pattern = "yyyy-MM-dd",shape = JsonFormat.Shape.STRING)
+    @Column(name = "userid")
+    private Long UserId;
+    @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
     @Column(name = "actiondate")
     private String ActionDate;
 }

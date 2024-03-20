@@ -2,7 +2,7 @@ package banquemisr.challenge05.service.Impl;
 
 import banquemisr.challenge05.DTO.TaskDTO;
 import banquemisr.challenge05.email.EmailService;
-import banquemisr.challenge05.entities.task;
+import banquemisr.challenge05.entities.Task;
 import banquemisr.challenge05.exception.TasksNotFoundExceptions;
 import banquemisr.challenge05.mapper.TasksMapper;
 import banquemisr.challenge05.repository.TasksRepository;
@@ -28,14 +28,14 @@ public class TasksServiceImpl implements TasksService {
     @Override
     public TaskDTO createTasks(TaskDTO tasksDTO) {
 
-        task tasks = TasksMapper.mapToTasks(tasksDTO);
-        task savedTasks = tasksRepository.save(tasks);
+        Task tasks = TasksMapper.mapToTasks(tasksDTO);
+        Task savedTasks = tasksRepository.save(tasks);
         return TasksMapper.mapToTasksDTO(savedTasks);
     }
 
     @Override
     public TaskDTO getTasksById(Long tasksId) {
-        task tasks = tasksRepository.findById(tasksId)
+        Task tasks = tasksRepository.findById(tasksId)
                 .orElseThrow(() ->
                         new TasksNotFoundExceptions("Tasks is not exist : " + tasksId));
 
@@ -46,8 +46,8 @@ public class TasksServiceImpl implements TasksService {
 
     @Override
     public List<TaskDTO> getAllEmployees() {
-        List<task> tasks = tasksRepository.findAll();
-        return tasks.stream().map((tasks1) -> TasksMapper.mapToTasksDTO((task) tasks))
+        List<Task> tasks = tasksRepository.findAll();
+        return tasks.stream().map((tasks1) -> TasksMapper.mapToTasksDTO((Task) tasks))
                 .collect(Collectors.toList());
 
     }
@@ -55,7 +55,7 @@ public class TasksServiceImpl implements TasksService {
 
     @Override
     public TaskDTO updateTasks(Long tasksId, TaskDTO updatedTasks) {
-        task tasks = tasksRepository.findById(tasksId).orElseThrow(
+        Task tasks = tasksRepository.findById(tasksId).orElseThrow(
                 () -> new TasksNotFoundExceptions("Tasks is not exist" + tasksId)
         );
         tasks.setTaskId(updatedTasks.getTaskId());
@@ -63,7 +63,7 @@ public class TasksServiceImpl implements TasksService {
         tasks.setStatus(updatedTasks.getStatus());
         tasks.setPriority(updatedTasks.getPriority());
         tasks.setDueDate(updatedTasks.getDueDate());
-        task updatedTasksObj = tasksRepository.save(tasks);
+        Task updatedTasksObj = tasksRepository.save(tasks);
         sendEmailToAdmin();
         return TasksMapper.mapToTasksDTO(updatedTasksObj);
     }
@@ -71,7 +71,7 @@ public class TasksServiceImpl implements TasksService {
 
     @Override
     public void deleteTasks(Long tasksId) {
-        task tasks = tasksRepository.findById(tasksId).orElseThrow(
+        Task tasks = tasksRepository.findById(tasksId).orElseThrow(
                 () -> new TasksNotFoundExceptions("Tasks is not exist " + tasksId)
 
         );
@@ -85,7 +85,7 @@ public class TasksServiceImpl implements TasksService {
     }
 
     @Override
-    public Page<task> filterAndPaginate(String title, Pageable pageable) {
+    public Page<Task> filterAndPaginate(String title, Pageable pageable) {
         return tasksRepository.findByTitleContainingIgnoreCase(title,pageable);
     }
 

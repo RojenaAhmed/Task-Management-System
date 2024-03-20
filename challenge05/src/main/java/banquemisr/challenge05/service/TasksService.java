@@ -1,6 +1,6 @@
 package banquemisr.challenge05.service;
 import banquemisr.challenge05.DTO.TaskDTO;
-import banquemisr.challenge05.entities.task;
+import banquemisr.challenge05.entities.Task;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -17,7 +17,7 @@ public interface TasksService {
 
  void deleteTasks(Long tasksId);
 
-Page <task> filterAndPaginate(String title , Pageable pageable);
+Page <Task> filterAndPaginate(String title , Pageable pageable);
 }
 
 

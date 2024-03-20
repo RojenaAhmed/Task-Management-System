@@ -1,7 +1,7 @@
 package banquemisr.challenge05.controller;
 
 import banquemisr.challenge05.DTO.TaskDTO;
-import banquemisr.challenge05.entities.task;
+import banquemisr.challenge05.entities.Task;
 import banquemisr.challenge05.service.TasksService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -37,7 +37,7 @@ public class TaskController {
     }
 
     @GetMapping("/tasks")
-    public Page<task> filterAndPaginateTasks(
+    public Page<Task> filterAndPaginateTasks(
             @RequestParam(name = "title", required = false) String title,
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "10") int size) {
