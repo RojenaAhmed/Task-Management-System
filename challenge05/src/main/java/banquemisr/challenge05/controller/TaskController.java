@@ -46,6 +46,7 @@ public class TaskController {
 
 
     // Build Get All Tasks Rest API
+    @GetMapping("/tasks")
     public ResponseEntity<List<TaskDTO>> getAllTasks() {
         List<TaskDTO> tasks = tasksService.getAllEmployees();
         return ResponseEntity.ok(tasks);
