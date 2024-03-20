@@ -1,12 +1,12 @@
 package banquemisr.challenge05.mapper;
 
-import banquemisr.challenge05.DTO.UsersDTO;
+import banquemisr.challenge05.DTO.UserDTO;
 
-import banquemisr.challenge05.entities.Users;
+import banquemisr.challenge05.entities.users;
 
 public class UsersMapper {
-    public static UsersDTO mapToUsersDTO(Users users) {
-        return new UsersDTO(
+    public static UserDTO mapToUsersDTO(users users) {
+        return new UserDTO(
                 users.getUserId(),
                 users.getFirstName(),
                 users.getLastName(),
@@ -17,8 +17,8 @@ public class UsersMapper {
         );
     }
 
-    public static Users mapToTasks(UsersDTO usersDTO) {
-        return new Users(
+    public static users mapToTasks(UserDTO usersDTO) {
+        return new users(
                 usersDTO.getUserId(),
                 usersDTO.getFirstName(),
                 usersDTO.getLastName(),

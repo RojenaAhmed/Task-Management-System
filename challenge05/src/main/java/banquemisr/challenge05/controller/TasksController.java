@@ -1,7 +1,7 @@
 package banquemisr.challenge05.controller;
 
-import banquemisr.challenge05.DTO.TasksDTO;
-import banquemisr.challenge05.entities.Tasks;
+import banquemisr.challenge05.DTO.TaskDTO;
+import banquemisr.challenge05.entities.tasks;
 import banquemisr.challenge05.service.TasksService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -23,22 +23,22 @@ public class TasksController {
 
     // Build Add Tasks Rest API
     @PostMapping
-    public ResponseEntity<TasksDTO> createTasks(@RequestBody TasksDTO tasksDTO) {
-        TasksDTO savedTasks = tasksService.createTasks(tasksDTO);
+    public ResponseEntity<TaskDTO> createTasks(@RequestBody TaskDTO tasksDTO) {
+        TaskDTO savedTasks = tasksService.createTasks(tasksDTO);
         return new ResponseEntity<>(savedTasks, HttpStatus.CREATED);
 
     }
 
     //Build Get Tasks Rest API
     @GetMapping("{id}")
-    public ResponseEntity<TasksDTO> getTasksById(@PathVariable("id") Long tasksId) {
-        TasksDTO tasksDTO = tasksService.getTasksById(tasksId);
+    public ResponseEntity<TaskDTO> getTasksById(@PathVariable("id") Long tasksId) {
+        TaskDTO tasksDTO = tasksService.getTasksById(tasksId);
         return ResponseEntity.ok(tasksDTO);
 
 }
 
     @GetMapping("/tasks")
-    public Page<Tasks> filterAndPaginateTasks(
+    public Page<tasks> filterAndPaginateTasks(
             @RequestParam(name = "title", required = false) String title,
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "10") int size) {
@@ -47,15 +47,15 @@ public class TasksController {
 
 
     // Build Get All Tasks Rest API
-    public ResponseEntity<List<TasksDTO>> getAllTasks(){
-    List<TasksDTO> tasks = tasksService.getAllEmployees();
+    public ResponseEntity<List<TaskDTO>> getAllTasks(){
+    List<TaskDTO> tasks = tasksService.getAllEmployees();
       return ResponseEntity.ok(tasks);
     }
 
     // Build update Tasks Rest API
     @PutMapping("{id}")
-    public ResponseEntity<TasksDTO> updateTask(@PathVariable("id")Long tasksId ,@RequestBody TasksDTO updatedTasks){
-        TasksDTO tasksDTO = tasksService.updateTasks(tasksId , updatedTasks);
+    public ResponseEntity<TaskDTO> updateTask(@PathVariable("id")Long tasksId , @RequestBody TaskDTO updatedTasks){
+        TaskDTO tasksDTO = tasksService.updateTasks(tasksId , updatedTasks);
         return ResponseEntity.ok(tasksDTO);
     }
 

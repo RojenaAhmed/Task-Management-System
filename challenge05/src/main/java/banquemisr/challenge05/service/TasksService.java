@@ -1,23 +1,23 @@
 package banquemisr.challenge05.service;
-import banquemisr.challenge05.DTO.TasksDTO;
-import banquemisr.challenge05.entities.Tasks;
+import banquemisr.challenge05.DTO.TaskDTO;
+import banquemisr.challenge05.entities.tasks;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 
 import java.util.List;
 public interface TasksService {
- TasksDTO createTasks(TasksDTO tasksDTO);
+ TaskDTO createTasks(TaskDTO tasksDTO);
 
- TasksDTO getTasksById(Long taskId);
+ TaskDTO getTasksById(Long taskId);
 
- List<TasksDTO> getAllEmployees();
+ List<TaskDTO> getAllEmployees();
 
- TasksDTO updateTasks(Long tasksId, TasksDTO updatedTasks);
+ TaskDTO updateTasks(Long tasksId, TaskDTO updatedTasks);
 
  void deleteTasks(Long tasksId);
 
-Page <Tasks> filterAndPaginate(String title , Pageable pageable);
+Page <tasks> filterAndPaginate(String title , Pageable pageable);
 }
 
 

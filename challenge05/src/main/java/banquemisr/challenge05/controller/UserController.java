@@ -1,5 +1,5 @@
 package banquemisr.challenge05.controller;
-import banquemisr.challenge05.DTO.UsersDTO;
+import banquemisr.challenge05.DTO.UserDTO;
 import banquemisr.challenge05.service.UsersService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +13,8 @@ public class UserController {
     private UsersService usersService;
 
     @GetMapping("{id}")
-    public ResponseEntity<UsersDTO> getUserId(@PathVariable("id") Long userId) {
-        UsersDTO usersDTO = usersService.getUsersById(userId);
+    public ResponseEntity<UserDTO> getUserId(@PathVariable("id") Long userId) {
+        UserDTO usersDTO = usersService.getUsersById(userId);
         return ResponseEntity.ok(usersDTO);
 
     }

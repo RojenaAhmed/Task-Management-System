@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table (name = "notification")
-public class Notification {
+public class notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long NotificationID;

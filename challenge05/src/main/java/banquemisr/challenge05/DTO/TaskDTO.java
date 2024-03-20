@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class TasksDTO {
+public class TaskDTO {
 
     private Long taskId;
 

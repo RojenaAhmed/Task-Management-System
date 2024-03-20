@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class NotificationsDTO {
+public class NotificationDTO {
 
     private Long notificationID;
 

@@ -1,9 +1,9 @@
 package banquemisr.challenge05.service;
 
-import banquemisr.challenge05.DTO.UsersDTO;
+import banquemisr.challenge05.DTO.UserDTO;
 
-import banquemisr.challenge05.config.JwtService;
-import banquemisr.challenge05.entities.Users;
+import banquemisr.challenge05.security.JwtService;
+import banquemisr.challenge05.entities.users;
 
 import banquemisr.challenge05.exception.UsersNotFoundExceptions;
 
@@ -12,7 +12,6 @@ import banquemisr.challenge05.mapper.UsersMapper;
 import banquemisr.challenge05.repository.UsersRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +20,8 @@ import org.springframework.stereotype.Service;
 public class UsersServiceImpl implements UsersService {
     private final UsersRepository usersRepository;
     private final JwtService jwtService;
-    public UsersDTO getUsersById (Long userId) {
-        Users users = usersRepository.findById(userId)
+    public UserDTO getUsersById (Long userId) {
+        users users = usersRepository.findById(userId)
                 .orElseThrow(() ->
         new UsersNotFoundExceptions(("\"user is not exist : \" " + userId)));
 

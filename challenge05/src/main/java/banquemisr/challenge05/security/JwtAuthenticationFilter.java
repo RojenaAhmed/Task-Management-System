@@ -1,4 +1,4 @@
-package banquemisr.challenge05.config;
+package banquemisr.challenge05.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

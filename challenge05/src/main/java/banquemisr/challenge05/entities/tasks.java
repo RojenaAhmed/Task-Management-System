@@ -1,33 +1,38 @@
 package banquemisr.challenge05.entities;
 
-
+import banquemisr.challenge05.AlertStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.util.Date;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table (name = "history")
-public class History {
+@Table (name = "tasks")
+public class tasks {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long HistoryId;
-    @Column (name = "taskid")
-    private Long TASKId;
-    @Column (name = "actiontype")
-    private String ActionType;
-    @Column (name = "userid")
-    private Long  UserId;
+    private Long TaskId ;
+
+    @Column(name = "title")
+    private String Title ;
+
+    @Column(name = "description")
+    private String Description ;
+
+    @Enumerated(EnumType.STRING)
+    private AlertStatus status;
+
+    @Column(name = "priority")
+    private Long Priority ;
+
     @JsonFormat(pattern = "yyyy-MM-dd",shape = JsonFormat.Shape.STRING)
-    @Column(name = "actiondate")
-    private String ActionDate;
+    @Column(name = "duedate")
+    private String DueDate ;
+
 }

@@ -1,9 +1,9 @@
 package banquemisr.challenge05.service;
 
-import banquemisr.challenge05.DTO.UsersDTO;
+import banquemisr.challenge05.DTO.UserDTO;
 
 public interface UsersService {
-  UsersDTO getUsersById(Long userId);
+  UserDTO getUsersById(Long userId);
 
     String login(String email,String password);
 }
